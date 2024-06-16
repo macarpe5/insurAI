@@ -7,50 +7,112 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #E1DFDB; /* Consistent background color */
+            margin: 0;
+            padding: 0;
         }
-        #chatbox {
-            width: 300px;
-            height: 500px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background-color: #f9f9f9;
+        #chat-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #070E17; /* Dark background for the chat container */
+            border-radius: 8px;
+            color: #FFF; /* White text color for readability */
         }
         #messages {
-            height: 400px;
+            height: 200px;
             overflow-y: auto;
+            border: 2px solid #000; /* Solid border for messages */
+            padding: 10px;
             margin-bottom: 10px;
+            background-color: #FFF; /* White background for messages */
+            color: #000; /* Black text color for messages */
         }
         .message {
-            margin: 5px 0;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 4px;
         }
-        .user {
+        .user-message {
             text-align: right;
+            background-color: #2A4D68; /* Background color for user message */
+            color: white; /* White text color for user message */
         }
-        .bot {
+        .ai-message {
             text-align: left;
+            background-color: #f2f2f2; /* Light background for AI message */
+            color: #000; /* Black text color for AI message */
         }
-        #userInput {
-            width: 100%;
-            padding: 5px;
+        input[type=text] {
+            width: calc(100% - 22px); /* Adjust width for padding and border */
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-        #sendBtn {
+        button {
             width: 100%;
-            padding: 5px;
-            background-color: #4CAF50;
+            background-color: #2A4D68; /* Button color to match the form */
             color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
             border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2A4D68; /* Button hover color */
         }
     </style>
 </head>
 <body>
-    <div id="chatbox">
+    <div id="chat-container">
         <div id="messages"></div>
         <input type="text" id="userInput" placeholder="Ask a question...">
         <button id="sendBtn">Send</button>
     </div>
-    <script src="chatbot.js"></script>
+    <script>
+        document.getElementById('sendBtn').addEventListener('click', function() {
+            let userInput = document.getElementById('userInput').value;
+            if (userInput.trim() === "") return;
+            appendMessage(userInput, 'user-message');
+            document.getElementById('userInput').value = '';
+            getBotResponse(userInput);
+        });
+
+        function appendMessage(message, sender) {
+            let messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = message;
+            document.getElementById('messages').appendChild(messageDiv);
+            document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+        }
+
+        function getBotResponse(userInput) {
+            let botResponse = generateResponse(userInput);
+            setTimeout(() => {
+                appendMessage(botResponse, 'ai-message');
+            }, 500);
+        }
+
+        function generateResponse(input) {
+            input = input.toLowerCase();
+            if (input.includes('home insurance')) {
+                return 'Home insurance provides coverage for your home and personal belongings in case of damage or theft.';
+            } else if (input.includes('auto insurance')) {
+                return 'Auto insurance covers damages to your vehicle and liability for any damages you may cause in an accident.';
+            } else if (input.includes('quote')) {
+                return 'You can get a quote by providing some details about your home or vehicle. Would you like to start the process?';
+            } else if (input.includes('premium')) {
+                return 'Insurance premiums are affected by factors such as your location, the value of your property, and your claims history.';
+            } else if (input.includes('claim')) {
+                return 'To file a claim, you need to contact your insurance provider and provide details about the incident.';
+            } else {
+                return 'I\'m sorry, I didn\'t understand that. Can you please rephrase your question or ask something else?';
+            }
+        }
+    </script>
 </body>
 </html>
