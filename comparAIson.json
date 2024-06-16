@@ -1,0 +1,15 @@
+[
+    {
+        "Company": "Insurance Co A",
+        "Coverage": "Comprehensive",
+        "Price": "$900/year",
+        "Deductible": "$500"
+    },
+    {
+        "Company": "Insurance Co B",
+        "Coverage": "Collision",
+        "Price": "$750/year",
+        "Deductible": "$300"
+    }
+    // Add more policy objects here
+]

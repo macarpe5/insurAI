@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Policy Comparison Tool</title>
+    <style>
+        /* Add your existing CSS styles here to match the design of your other pages */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .comparison-matrix {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        .comparison-matrix th, .comparison-matrix td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .comparison-matrix th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Insurance Policy Comparison Tool</h1>
+    <input type="file" id="fileInput" accept=".json">
+    <button onclick="loadFile()">Upload and Compare</button>
+    <table id="comparisonMatrix" class="comparison-matrix"></table>
+
+    <script>
+        function loadFile() {
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                var policies = JSON.parse(e.target.result);
+                displayComparisonMatrix(policies);
+            };
+            
+            reader.readAsText(file);
+        }
+
+        function displayComparisonMatrix(policies) {
+            var matrix = document.getElementById('comparisonMatrix');
+            matrix.innerHTML = ''; // Clear previous data
+            
+            // Create header row
+            var header = matrix.insertRow();
+            for (var key in policies[0]) {
+                header.insertCell().textContent = key.toUpperCase();
+            }
+            
+            // Populate data rows
+            policies.forEach(function(policy) {
+                var row = matrix.insertRow();
+                for (var key in policy) {
+                    row.insertCell().textContent = policy[key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
