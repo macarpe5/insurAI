@@ -1,13 +1,18 @@
+        // Function to generate a random price between min and max
+        function getRandomPrice(min, max) {
+            return (Math.random() * (max - min) + min).toFixed(2);
+        }
+
         function displayComparisonMatrix() {
             var matrix = document.getElementById('comparisonMatrix');
             matrix.innerHTML = ''; // Clear previous data
             
-            // Define a generic set of policies
+            // Define a generic set of policies with random prices
             var policies = [
-                {"Company": "Progressive", "Coverage": "Varies", "Price": "Varies", "Deductible": "Varies"},
-                {"Company": "State Farm", "Coverage": "Varies", "Price": "Varies", "Deductible": "Varies"},
-                {"Company": "GEICO", "Coverage": "Varies", "Price": "Varies", "Deductible": "Varies"},
-                {"Company": "Allstate", "Coverage": "Varies", "Price": "Varies", "Deductible": "Varies"}
+                {"Company": "Progressive", "Coverage": "Comprehensive", "Price": "$" + getRandomPrice(800, 1200), "Deductible": "$" + getRandomPrice(100, 500)},
+                {"Company": "State Farm", "Coverage": "Collision", "Price": "$" + getRandomPrice(700, 1100), "Deductible": "$" + getRandomPrice(100, 500)},
+                {"Company": "GEICO", "Coverage": "Liability", "Price": "$" + getRandomPrice(600, 1000), "Deductible": "$" + getRandomPrice(100, 500)},
+                {"Company": "Allstate", "Coverage": "Full Coverage", "Price": "$" + getRandomPrice(900, 1300), "Deductible": "$" + getRandomPrice(100, 500)}
             ];
             
             // Create header row
