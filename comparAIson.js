@@ -9,10 +9,10 @@
             
             // Define a generic set of policies with random prices
             var policies = [
-                {"Company": "Progressive", "Coverage": "Comprehensive", "Price": "$" + getRandomPrice(800, 1200), "Deductible": "$" + getRandomPrice(100, 500)},
-                {"Company": "State Farm", "Coverage": "Collision", "Price": "$" + getRandomPrice(700, 1100), "Deductible": "$" + getRandomPrice(100, 500)},
-                {"Company": "GEICO", "Coverage": "Liability", "Price": "$" + getRandomPrice(600, 1000), "Deductible": "$" + getRandomPrice(100, 500)},
-                {"Company": "Allstate", "Coverage": "Full Coverage", "Price": "$" + getRandomPrice(900, 1300), "Deductible": "$" + getRandomPrice(100, 500)}
+                {"Company": "Progressive", "Coverage": "Comprehensive", "Premium": "$" + getRandomPrice(800, 1200), "Deductible": "$" + getRandomPrice(100, 500)},
+                {"Company": "State Farm", "Coverage": "Collision", "Premium": "$" + getRandomPrice(700, 1100), "Deductible": "$" + getRandomPrice(100, 500)},
+                {"Company": "GEICO", "Coverage": "Liability", "Premium": "$" + getRandomPrice(600, 1000), "Deductible": "$" + getRandomPrice(100, 500)},
+                {"Company": "Allstate", "Coverage": "Full Coverage", "Premium": "$" + getRandomPrice(900, 1300), "Deductible": "$" + getRandomPrice(100, 500)}
             ];
             
             // Create header row
