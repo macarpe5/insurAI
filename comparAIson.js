@@ -1,19 +1,14 @@
-        function loadFile() {
-            var fileInput = document.getElementById('fileInput');
-            var file = fileInput.files[0];
-            var reader = new FileReader();
-            
-            reader.onload = function(e) {
-                var policies = JSON.parse(e.target.result);
-                displayComparisonMatrix(policies);
-            };
-            
-            reader.readAsText(file);
-        }
-
-        function displayComparisonMatrix(policies) {
+        function displayComparisonMatrix() {
             var matrix = document.getElementById('comparisonMatrix');
             matrix.innerHTML = ''; // Clear previous data
+            
+            // Define a generic set of policies
+            var policies = [
+                {"Company": "Progressive", "Coverage": "Varies", "Price": "Varies", "Deductible": "Varies"},
+                {"Company": "State Farm", "Coverage": "Varies", "Price": "Varies", "Deductible": "Varies"},
+                {"Company": "GEICO", "Coverage": "Varies", "Price": "Varies", "Deductible": "Varies"},
+                {"Company": "Allstate", "Coverage": "Varies", "Price": "Varies", "Deductible": "Varies"}
+            ];
             
             // Create header row
             var header = matrix.insertRow();
