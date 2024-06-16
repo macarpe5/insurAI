@@ -1,4 +1,16 @@
-document.getElementById('sendBtn').addEventListener('click', function() {
+       // Function to add a greeting message when the page loads
+        function greetCustomer() {
+            var messagesContainer = document.getElementById('messages');
+            var aiGreetingDiv = document.createElement('div');
+            aiGreetingDiv.textContent = "Welcome to InsurAI! How can I assist you today?";
+            aiGreetingDiv.className = 'message ai-message';
+            messagesContainer.appendChild(aiGreetingDiv);
+        }
+
+        // Call greetCustomer when the window loads
+        window.onload = greetCustomer;
+
+        document.getElementById('sendBtn').addEventListener('click', function() {
             let userInput = document.getElementById('userInput').value;
             if (userInput.trim() === "") return;
             appendMessage(userInput, 'user-message');
